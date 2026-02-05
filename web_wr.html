@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WellReflect - Hygiene Monitoring Dashboard</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- SheetJS for Excel Export -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-content">
+                <h1>Well Reflect Dashboard</h1>
+                <p>Advanced Hygiene Monitoring System</p>
+            </div>
+            <div class="date-display" id="currentDate">Loading date...</div>
+        </header>
+
+        <!-- Statistics Grid -->
+        <section class="stats-grid">
+            <!-- Card 1: Workers Count -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">Total Wash Count</span>
+                    <span class="stat-icon">👥</span>
+                </div>
+                <div class="stat-value" id="countToday">0</div>
+                <div class="stat-footer">
+                    <span id="countTrend">Unique workers today</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Last Active User -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">Last Machine Log</span>
+                    <span class="stat-icon">🕒</span>
+                </div>
+                <div class="stat-value" style="font-size: 1.8rem;" id="lastWorker">None</div>
+                <div class="stat-footer">
+                    <span id="lastTime">No activity recorded</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Compliance Rate -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">Compliance Rate</span>
+                    <span class="stat-icon">📊</span>
+                </div>
+                <div class="stat-value" id="hygienePercent">0%</div>
+                <div class="stat-footer" id="hygieneDetail">
+                    <span>Daily department goal</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Table Section -->
+        <section class="table-container">
+            <div class="table-header">
+                <div class="table-title">Daily Activity Log</div>
+                <button class="export-btn" onclick="exportTableStart()">
+                    Download Excel Report
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Worker Identity</th>
+                            <th>Time Accessed</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Javascript will inject rows here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="emptyState" class="empty-state">
+                <p>Connecting to system data...</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
